@@ -11,7 +11,7 @@ import flixel.util.FlxMath;
  * A FlxState which can be used for the actual gameplay.
  */
 class PlayState extends FlxState {
-	private var _map:CampusMap;
+	private var _campusMap:CampusMap;
 
   /**
 	 * Function that is called up when to state is created to set it up.
@@ -25,7 +25,8 @@ class PlayState extends FlxState {
 
     super.create();
 
-    _map = new CampusMap(20, 20);
+    _campusMap = new CampusMap(20, 20);
+    add(_campusMap);
 	}
 
 	/**
