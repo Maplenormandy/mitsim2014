@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<data>
+    <definition id="sans10" size="10" style="bold" color="0xffffff" outline="0x000000" align="left"/>
+	<definition id="sans10c" size="10" style="bold" color="0xffffff" outline="0x000000" align="center"/>
+	<definition id="sans12" size="12" style="bold" color="0xffffff" outline="0x000000" align="left"/>
+	<definition id="sans12c" size="12" style="bold" color="0xffffff" outline="0x000000" align="center"/>
+	<definition id="sans16" size="16" style="bold" color="0xffffff" outline="0x000000" align="left"/>
+    <definition id="sans16c" size="16" style="bold" color="0xffffff" outline="0x000000" align="center"/>
+</data>

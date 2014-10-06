@@ -6,19 +6,25 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.addons.ui.FlxUIState;
 
 /**
  * A FlxState which can be used for the actual gameplay.
  */
-class PlayState extends FlxState {
+class PlayState extends FlxUIState {
 	private var _campusMap:CampusMap;
 
-  /**
-	 * Function that is called up when to state is created to set it up.
+  // Temporary variable
+  private var _showed:Bool;
+
+	/**
+	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void {
     Reg.studentHappiness = 0;
     Reg.endowment = 0.0;
+
+    _showed = false;
 
     var a1 = new Outcome("+1 student happiness; +$4k endowment", "");
     a1.effect();
@@ -37,10 +43,16 @@ class PlayState extends FlxState {
 		super.destroy();
 	}
 
+
 	/**
 	 * Function that is called once every frame.
 	 */
 	override public function update():Void {
+        if (Std.random(100) == 0 && !_showed) {
+            openSubState(new EventPopup());
+            _showed = true;
+        }
 		super.update();
 	}
 }
+

@@ -8,11 +8,12 @@ import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 using flixel.util.FlxSpriteUtil;
 import flixel.util.FlxDestroyUtil;
+import flixel.addons.ui.FlxUIState;
 
 /**
  * A FlxState which can be used for the game's menu.
  */
-class MenuState extends FlxState {
+class MenuState extends FlxUIState {
     private var _btnPlay:FlxButton;
 
 	/**
