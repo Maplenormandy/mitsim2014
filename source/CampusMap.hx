@@ -7,14 +7,14 @@ import flixel.util.FlxAngle;
 
 class CampusMap extends FlxSprite
 {
-    public var speed:Float = 200;
+    public var speed:Float = 400;
 
     public function new(X:Float=0, Y:Float=0)
     {
         super(X, Y);
         makeGraphic(16, 16, FlxColor.BLUE);
 
-        drag.x = drag.y = 1600;
+        drag.x = drag.y = 1000;
 
         this.loadGraphic(AssetPaths.campusmap__png);
     }
@@ -40,26 +40,26 @@ class CampusMap extends FlxSprite
         velocity.y = this.speed;
 
         var mA:Float = 0;
-        if (_up)
+        if (_down)
         {
             mA = -90;
             if (_left)
-                mA -= 45;
-            else if (_right)
                 mA += 45;
+            else if (_right)
+                mA -= 45;
         }
-        else if (_down)
+        else if (_up)
         {
             mA = 90;
             if (_left)
-                mA += 45;
-            else if (_right)
                 mA -= 45;
+            else if (_right)
+                mA += 45;
         }
         else if (_left)
-            mA = 180;
-        else if (_right)
             mA = 0;
+        else if (_right)
+            mA = 180;
         FlxAngle.rotatePoint(speed, 0, 0, 0, mA, velocity);
 
       }
