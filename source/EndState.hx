@@ -6,6 +6,7 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.util.FlxColor;
 using flixel.util.FlxSpriteUtil;
 import flixel.util.FlxDestroyUtil;
 
@@ -14,6 +15,7 @@ import flixel.util.FlxDestroyUtil;
  */
 class EndState extends FlxState {
   private var _btnRestart:FlxButton;
+  private var _txtRestart:FlxText;
 
 	/**
 	 * Function that is called up when to state is created to set it up.
@@ -21,7 +23,14 @@ class EndState extends FlxState {
 	override public function create():Void {
     _btnRestart = new FlxButton(0, 0, "Start Over", clickRestart);
     _btnRestart.screenCenter();
+    _btnRestart.y = FlxG.height * 2 / 3;
+
+    _txtReason = new FlxText(FlxG.width / 2, FlxG.height / 3, 0, "Guess you're terrible", 12A
+    _txtReason.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1););
+    _txtReason.alignment = "center";
+
     add(_btnRestart);
+    add(_txtReason);
 
 		super.create();
 	}
