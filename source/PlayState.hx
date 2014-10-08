@@ -26,12 +26,16 @@ class PlayState extends FlxUIState {
 
     _showed = false;
 
+    _xml_id = "state_play";
+
     var a1 = new Outcome("+1 student happiness; +$4k endowment", "");
     a1.effect();
 
     super.create();
 
-    _campusMap = new CampusMap(20, 20);
+    _campusMap = new CampusMap(20, 50);
+
+
     add(_campusMap);
   }
 

@@ -7,4 +7,11 @@
 	<definition id="sans12c" size="12" style="bold" color="0xffffff" outline="0x000000" align="center"/>
 	<definition id="sans16" size="16" style="bold" color="0xffffff" outline="0x000000" align="left"/>
     <definition id="sans16c" size="16" style="bold" color="0xffffff" outline="0x000000" align="center"/>
+
+    <definition id="basic_button" width="100" height="25">
+		<text size="10" style="bold" color="0xffffff" outline="0x000000" align="center">
+			<color id="over" value="0xffff00"/>
+		</text>
+		<graphic id="all" image="ui/buttons/button_grey" slice9="6,6,11,11"/>
+	</definition>	
 </data>

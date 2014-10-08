@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	
+	<include id="_ui_globals"/>
+	
+	<!--DEFS-->
+	
+	<definition id="grey" src="ui/chrome/dark_grey"/>
+	<definition id="grey_flat" src="ui/chrome/dark_grey_flat_top"/>
+
+
+	<definition id="chrome_flat" src="ui/chrome/dark_grey_flat_top" slice9="4,4,8,8"/>
+		
+	<!--STUFF-->
+	
+	<layout id="primary">
+		
+		<group id="title_bar_container"/>
+		<!--waves group-->
+		
+			<chrome id="title_bar" x="0" y="0" width="680" height="40" use_def="grey" group="title_bar_container">
+				<anchor x="left" y="top" x-flush="left" y-flush="top"/>
+
+				<min_size height="6%"/>
+			</chrome>		
+			<button id="options_button" x="5" y="10" use_def="basic_button" group="top" label="Options">
+				<!--
+				<anchor x="title_bar.left" y="title_bar.top" x-flush="left" y-flush="bottom"/>
+			-->
+			</button> 
+			<text id="title" use_def="sans16c" x="100" y="10" width="100" text="MIT Sim">
+			</text>
+			<text id="name" use_def="sans16c" x="240" y="10" width="100" text="{name}">
+			</text>
+	</layout>
+	
+	<mode id="primary">
+		<show id="primary"/>
+	</mode>
+		
+</data>
