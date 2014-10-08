@@ -39,12 +39,12 @@ class PlayState extends FlxUIState {
     _showed = false;
     _xml_id = "state_play";
 
-    super.create();
-
     _campusMap = new CampusMap(20, 50);
 
     add(_campusMap);
-    
+
+    super.create();
+
     this.moneyText = cast _ui.getAsset("money", true);
     this.donorsText = cast _ui.getAsset("donors", true);
 
