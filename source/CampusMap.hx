@@ -28,8 +28,9 @@ class CampusMap extends FlxSprite
         this.loadGraphic(AssetPaths.campusmap__png);
 
         for (i in 0...this.overlays.length) {
+          this.stamp(this.overlays[i], Std.int(positions[i].x), Std.int(positions[i].x));
           this.overlays[i].setAlpha(0.0);
-          this.stamp(this.overlays[i], 1030, 700 + (110 * i));
+
         }
     }
 

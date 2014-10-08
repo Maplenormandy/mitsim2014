@@ -14,7 +14,7 @@ class MapOverlay extends FlxSprite
     super(X, Y);
 
     makeGraphic(100, 100, FlxColor.YELLOW);
-    this.alpha = 0.3;
+    this.alpha = 0.0;
   }
 
   public function setAlpha(newAlpha:Float) {

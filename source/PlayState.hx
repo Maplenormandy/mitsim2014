@@ -6,6 +6,7 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.util.FlxPoint;
 import flixel.addons.ui.FlxUIState;
 import flixel.addons.ui.FlxUIText;
 
@@ -27,6 +28,36 @@ class PlayState extends FlxUIState {
    * Function that is called up when to state is created to set it up.
    */
   override public function create():Void {
+    // Overlays
+    var overlay1 = new MapOverlay(100, 100);
+    var overlay1pt = new FlxPoint(1030, 700);
+    var overlay2 = new MapOverlay(100, 100);
+    var overlay2pt = new FlxPoint(600, 700);
+    var overlay3 = new MapOverlay(100, 100);
+    var overlay3pt = new FlxPoint(1030, 850);
+    var overlay4 = new MapOverlay(100, 100);
+    var overlay4pt = new FlxPoint(700, 300);
+    var overlay5 = new MapOverlay(100, 100);
+    var overlay5pt = new FlxPoint(500, 670);
+    var overlay6 = new MapOverlay(100, 100);
+    var overlay6pt = new FlxPoint(400, 990);
+
+    var _campusMap = new CampusMap(300, 200,
+        [overlay1,
+         overlay2,
+         overlay3,
+         overlay4,
+         overlay5,
+         overlay6],
+          [overlay1pt,
+           overlay2pt,
+           overlay3pt,
+           overlay4pt,
+           overlay5pt,
+           overlay6pt]);
+    add(_campusMap);
+
+
     Reg.flags = new Map();
 
     this.eventManager = new EventManager(new List<Event>());
@@ -38,27 +69,6 @@ class PlayState extends FlxUIState {
 
     _showed = false;
     _xml_id = "state_play";
-
-    // Overlays
-    var overlay1 = new MapOverlay(100, 100);
-    //var overlay1pt = new FlxPoint(
-    var overlay2 = new MapOverlay(100, 100);
-    var overlay3 = new MapOverlay(100, 100);
-    var overlay4 = new MapOverlay(100, 100);
-    var overlay5 = new MapOverlay(100, 100);
-    var overlay6 = new MapOverlay(100, 100);
-
-    _campusMap = new CampusMap(300, 200, [overlay1,
-                                          overlay2,
-                                          overlay3,
-                                          overlay4,
-                                          overlay5,
-                                          overlay6],
-                                          []);
-
-    add(_campusMap);
-
-
 
     super.create();
 
