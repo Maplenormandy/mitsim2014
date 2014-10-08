@@ -33,9 +33,9 @@ class PlayState extends FlxUIState {
     super.create();
 
     _campusMap = new CampusMap(20, 50);
-    add(_campusMap);
 
-    FlxG.sound.playMusic("mit-theme", 1);
+
+    add(_campusMap);
   }
 
   /**
