@@ -37,3 +37,4 @@ class EventParser {
 
     return events;
   }
+}
