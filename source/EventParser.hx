@@ -10,7 +10,7 @@ typedef OutcomeJsonObject = {
 typedef EventJsonObject = {
   var title: String;
   var flavor: String;
-  var outcome: OutcomeJsonObject;
+  var outcomes: List<OutcomeJsonObject>;
 }
 
 typedef EventsJsonObject = {
