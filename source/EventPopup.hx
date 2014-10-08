@@ -30,7 +30,7 @@ class EventPopup extends FlxUIPopup {
     var flavorText:FlxUIText = cast _ui.getAsset("flavor");
     flavorText.text = this.event.flavorText;
 
-    this.effectText = cast _ui.getAsset("effect");
+    this.effectText = cast _ui.getAsset("effect_text");
 
     for (i in 0 ... this.event.outcomes.length) {
       var button:FlxUIButton = cast _ui.getAsset("btn" + i);
