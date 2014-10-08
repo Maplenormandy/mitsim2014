@@ -78,5 +78,12 @@
 
 	<!--------------------------------CUSTOM---------------------------------------->
 
-	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
+  <!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
+  <assets path="assets/sounds" if="flash">
+    <sound path="mit-theme.mp3" id="mit-theme" />
+  </assets>
+
+  <assets path="assets/sounds" unless="flash">
+    <sound path="mit-theme.wav" id="mit-theme" />
+  </assets>
 </project>
