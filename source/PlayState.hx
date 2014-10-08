@@ -45,6 +45,9 @@ class PlayState extends FlxUIState {
 
     super.create();
 
+    var nameText : FlxUIText = cast _ui.getAsset("name", true);
+    nameText.text = "Dean Deanerson";
+
     this.moneyText = cast _ui.getAsset("money", true);
     this.donorsText = cast _ui.getAsset("donors", true);
 
