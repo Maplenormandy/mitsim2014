@@ -24,17 +24,15 @@ class EventParser {
 
     for (event : EventJsonObject in jsonObject.events) {
       var outcomes : List<Outcome>;
+      var event : Event = new Event(event.title, event.flavor);
+
       for (outcome : OutcomeJsonObject in event.outcomes) {
-        outcomes.add(new Outcome(
+        event.addOutcome(new Outcome(
               outcome.effect,
               outcome.flavor
         ));
       }
-      events.add(new Event(
-            event.title,
-            event.flavor,
-            outcomes
-      ));
+      events.add(event);
     }
 
     return events;
