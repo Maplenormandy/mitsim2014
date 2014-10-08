@@ -39,19 +39,6 @@ class PlayState extends FlxUIState {
     _showed = false;
     _xml_id = "state_play";
 
-    _campusMap = new CampusMap(20, 50);
-
-    add(_campusMap);
-
-    super.create();
-
-    var nameText : FlxUIText = cast _ui.getAsset("name", true);
-    nameText.text = "Christopher Colombus";
-
-    this.moneyText = cast _ui.getAsset("money", true);
-    this.donorsText = cast _ui.getAsset("donors", true);
-
-
     // Overlays
     var overlay1 = new MapOverlay(100, 100);
     //var overlay1pt = new FlxPoint(
@@ -68,6 +55,18 @@ class PlayState extends FlxUIState {
                                           overlay5,
                                           overlay6],
                                           []);
+
+    add(_campusMap);
+
+
+
+    super.create();
+
+    var nameText : FlxUIText = cast _ui.getAsset("name", true);
+    nameText.text = "Christopher Colombus";
+
+    this.moneyText = cast _ui.getAsset("money", true);
+    this.donorsText = cast _ui.getAsset("donors", true);
 
     // Sound
     FlxG.sound.playMusic("mit-theme", 1);
