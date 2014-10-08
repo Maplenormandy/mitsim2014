@@ -36,6 +36,8 @@ class PlayState extends FlxUIState {
 
 
     add(_campusMap);
+
+    FlxG.sound.playMusic("mit-theme", 1);
   }
 
   /**
