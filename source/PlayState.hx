@@ -40,6 +40,15 @@ class PlayState extends FlxUIState {
     super.destroy();
   }
 
+  /**
+   * Lose for a specified reason
+   */
+  private function lose(reason:String):Void {
+    var state : EndState = new EndState();
+    state.reason = reason;
+    FlxG.switchState(state);
+  }
+
 
   /**
    * Function that is called once every frame.
@@ -51,6 +60,14 @@ class PlayState extends FlxUIState {
       openSubState(new EventPopup(event));
       _showed = true;
     }
+
+    if (Reg.studentHappiness < 0) {
+      lose("MIT burns to the ground in the largest student protest since the 70's");
+    } else if (Reg.endowment < 0) {
+      lose("Out of money and wealthy alumni, you are forced to sell MIT to CalTech to make ends meet");
+    }
+
+
     super.update();
   }
 }
