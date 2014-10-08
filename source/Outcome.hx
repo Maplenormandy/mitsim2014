@@ -34,6 +34,14 @@ class Outcome {
                 trace(Reg.endowment);
                 continue;
             }
+
+            var r = ~/([+-][0-9]+) wealthy donors/;
+            if (r.match(effect)) {
+                var val = Std.parseInt(r.matched(1));
+                Reg.wealthyDonors += val;
+                trace(Reg.wealthyDonors);
+                continue;
+            }
         }
     }
 

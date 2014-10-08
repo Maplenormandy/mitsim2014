@@ -44,11 +44,9 @@ class EventPopup extends FlxUIPopup {
         if (id == "click_button") {
           var i:Int = cast params[0];
           this.event.outcomes[i].effect();
-          trace(i);
           close();
         } else if (id == "over_button") {
           var i:Int = cast params[0];
-          trace(i);
           this.effectText.text = this.event.outcomes[i].effectText;
         } else if (id == "out_button") {
           this.effectText.text = "";

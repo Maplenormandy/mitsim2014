@@ -7,12 +7,16 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.addons.ui.FlxUIState;
+import flixel.addons.ui.FlxUIText;
 
 /**
  * A FlxState which can be used for the actual gameplay.
  */
 class PlayState extends FlxUIState {
   private var _campusMap:CampusMap;
+
+  public var moneyText:FlxUIText;
+  public var donorsText:FlxUIText;
 
   // Temporary variable
   private var _showed:Bool;
@@ -21,21 +25,23 @@ class PlayState extends FlxUIState {
    * Function that is called up when to state is created to set it up. 
    */
   override public function create():Void {
-    Reg.studentHappiness = 0;
-    Reg.endowment = 0.0;
+    Reg.flags = new Map();
+
+    Reg.endowment = 1e9;
+    Reg.studentHappiness = 10;
+    Reg.wealthyDonors = 100;
 
     _showed = false;
     _xml_id = "state_play";
-
-    var a1 = new Outcome("+1 student happiness; +$4k endowment", "");
-    a1.effect();
 
     super.create();
 
     _campusMap = new CampusMap(20, 50);
 
-
     add(_campusMap);
+    
+    this.moneyText = cast _ui.getAsset("money", true);
+    this.donorsText = cast _ui.getAsset("donors", true);
 
     FlxG.sound.playMusic("mit-theme", 1);
   }
@@ -63,19 +69,23 @@ class PlayState extends FlxUIState {
    */
   override public function update():Void {
     if (!_showed) {
-      var event = new Event("Test Event", "Ayyoooo");
+      var event = new Event("Test Event", "Ayyoooo", 100);
       event.addOutcome(new Outcome("+1 student happiness; -4k endowment", "aye"));
       event.addOutcome(new Outcome("-1 student happiness; +4k endowment", "nay"));
       openSubState(new EventPopup(event));
       _showed = true;
     }
 
+    this.moneyText.text = "$" + Reg.endowment;
+    this.donorsText.text = "Donors: " + Reg.wealthyDonors;
+
     if (Reg.studentHappiness < 0) {
       lose("MIT burns to the ground in the largest student protest since the 70's");
     } else if (Reg.endowment < 0) {
-      lose("Out of money and wealthy alumni, you are forced to sell MIT to CalTech to make ends meet");
+      lose("Out of money, you are forced to sell MIT to CalTech to make ends meet");
     }
 
+    Reg.endowment += Reg.wealthyDonors * 100;
 
     super.update();
   }
