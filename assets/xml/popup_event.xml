@@ -1,29 +1,55 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <data>
-    <include id="_ui_globals"/>
+  <include id="_ui_globals"/>
 
-    <definition id="button" width="740" height="25">
-        <text use_def="sans12c" color="0xffffff">
-            <color id="over" value="0xffff00" />
-        </text>
-    </definition>
-
-    <text id="title" use_def="sans16c" x="30" y="30" width="740" text="{title}">
-        <anchor x="30" x-flush="left" y="30" y-flush="top" />
+  <definition id="button" width="740" height="25">
+    <text use_def="sans12c" color="0xffffff">
+      <color id="over" value="0xffff00" />
     </text>
-    
-    <text id="flavor" use_def="sans12c" x="30" y="60" width="740" text="{flavor}">
-        <anchor x="30" x-flush="left" y="60" y-flush="top" />
-    </text>
+  </definition>
 
-    <button id="btn0" use_def="button" x="30" y="400" width="740" label="{outcome0}">
-        <anchor y="400" y-flush="top"/>
-        <param type="int" value="0"/>
-    </button>
+  <text id="title" use_def="sans16c" x="30" y="30" width="740" text="{title}">
+    <anchor x="30" x-flush="left" y="30" y-flush="top" />
+  </text>
 
-    <button id="btn1" use_def="button" x="30" y="430" width="740" label="{outcome1}">
-        <anchor y="400" y-flush="top"/>
-        <param type="int" value="1"/>
-    </button>
+  <text id="flavor" use_def="sans12c" x="30" y="60" width="740" text="{flavor}">
+    <anchor x="30" x-flush="left" y="60" y-flush="top" />
+  </text>
+
+  <button id="btn0" use_def="button" x="30" y="400" width="740" label="{outcome0}">
+    <anchor y="400" y-flush="top"/>
+    <param type="int" value="0"/>
+  </button>
+
+  <button id="btn1" use_def="button" x="30" y="430" width="740" label="{outcome1}">
+    <anchor y="430" y-flush="top"/>
+    <param type="int" value="1"/>
+  </button>
+
+  <button id="btn2" use_def="button" x="30" y="460" width="740" label="{outcome2}">
+    <anchor y="460" y-flush="top"/>
+    <param type="int" value="2"/>
+  </button>
+
+  <button id="btn3" use_def="button" x="30" y="490" width="740" label="{outcome3}">
+    <anchor y="490" y-flush="top"/>
+    <param type="int" value="3"/>
+  </button>
+
+  <mode id="choice_1" default="true">
+    <show id="btn0" />
+    <hide id="btn1,btn2,btn3" />
+  </mode>
+  <mode id="choice_2">
+    <show id="btn0,btn1" />
+    <hide id="btn2,btn3" />
+  </mode>
+  <mode id="choice_3">
+    <show id="btn0,btn1,btn2" />
+    <hide id="btn3" />
+  </mode>
+  <mode id="choice_4">
+    <show id="btn0,btn1,btn2,btn3" />
+  </mode>
 </data>

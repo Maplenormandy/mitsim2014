@@ -9,19 +9,29 @@ import flixel.addons.ui.FlxUIText;
 import flixel.addons.ui.interfaces.IFlxUIWidget;
 
 class EventPopup extends FlxUIPopup {
-    public override function create():Void {
-        _xml_id = "popup_event";
+  public var event(default, null):Event;
 
-        super.create();
-    }
+  public function new(event:Event) {
+    this.event = event;
 
-    public override function getEvent(id:String, target:Dynamic, data:Array<Dynamic>, ?params:Array<Dynamic>) {
-        if (params != null && params.length > 0) {
-            if (id == "click_button") {
-                var i:Int = cast params[0];
-                trace(i);
-                close();
-            }
-        }
+    super();
+  }
+  
+  public override function create():Void {
+    _xml_id = "popup_event";
+
+    super.create();
+
+    _ui.setMode("choice_" + this.event.outcomes.length);
+  }
+
+  public override function getEvent(id:String, target:Dynamic, data:Array<Dynamic>, ?params:Array<Dynamic>) {
+    if (params != null && params.length > 0) {
+      if (id == "click_button") {
+        var i:Int = cast params[0];
+        trace(i);
+        close();
+      }
     }
+  }
 }
