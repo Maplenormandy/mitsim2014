@@ -19,7 +19,7 @@ class Outcome {
                 continue;
             }
 
-            r = ~/([+-])\$([0-9]+\.?[0-9]*)(k|mil|bil) endowment/;
+            r = ~/([+-])([0-9]+\.?[0-9]*)(k|mil|bil) endowment/;
             if (r.match(effect)) {
                 var val = Std.parseFloat(r.matched(1) + r.matched(2));
                 switch (r.matched(3)) {
