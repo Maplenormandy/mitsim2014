@@ -15,7 +15,9 @@ import flixel.util.FlxDestroyUtil;
  */
 class EndState extends FlxUIState {
   private var _btnRestart:FlxButton;
-  private var _txtRestart:FlxText;
+  private var _txtReason:FlxText;
+
+  public var reason:String = "Guess you're terrible";
 
   /**
    * Function that is called up when to state is created to set it up.
@@ -25,8 +27,8 @@ class EndState extends FlxUIState {
     _btnRestart.screenCenter();
     _btnRestart.y = FlxG.height * 2 / 3;
 
-    _txtReason = new FlxText(FlxG.width / 2, FlxG.height / 3, 0, "Guess you're terrible", 12A
-    _txtReason.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1););
+    _txtReason = new FlxText(FlxG.width / 2, FlxG.height / 3, 0, reason, 12);
+    _txtReason.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1);
     _txtReason.alignment = "center";
 
     add(_btnRestart);
@@ -36,7 +38,7 @@ class EndState extends FlxUIState {
   }
 
   private function clickRestart():Void {
-    FlxG.switchState(new RestartState());
+    FlxG.switchState(new PlayState());
   }
 
   /**
