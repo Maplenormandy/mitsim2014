@@ -18,6 +18,7 @@ class PlayState extends FlxUIState {
 
   public var moneyText:FlxUIText;
   public var donorsText:FlxUIText;
+  public var studentHappinessText:FlxUIText;
 
   // Temporary variable
   private var _showed:Bool;
@@ -77,6 +78,7 @@ class PlayState extends FlxUIState {
 
     this.moneyText = cast _ui.getAsset("money", true);
     this.donorsText = cast _ui.getAsset("donors", true);
+    this.studentHappinessText = cast _ui.getAsset("student-happiness", true);
 
     // Sound
     FlxG.sound.playMusic("mit-theme", 1);
@@ -112,6 +114,7 @@ class PlayState extends FlxUIState {
 
     this.moneyText.text = "$" + Reg.endowment;
     this.donorsText.text = "Donors: " + Reg.wealthyDonors;
+    this.studentHappinessText.text = "Student Approval: " + Reg.studentHappiness + "%";
 
     if (Reg.studentHappiness < 0) {
       lose("MIT burns to the ground in the largest student protest since the 70's");
