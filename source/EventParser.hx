@@ -22,12 +22,19 @@ class EventParser {
     var jsonObject : EventsJsonObject = Json.parse(text);
     var events : List<Event>;
 
-    for (var evt : EventJsonObject in jsonObject.events) {
+    for (event : EventJsonObject in jsonObject.events) {
+      var outcomes : List<Outcome>;
+      for (outcome : OutcomeJsonObject in event.outcomes) {
+        outcomes.add(new Outcome(
+              outcome.effect,
+              outcome.flavor
+        ));
+      }
       events.add(new Event(
-            evt.title,
-            evt.flavor,
-            new Outcome(evt.outcome.effect, evt.outcome.flavor)
-      ))
+            event.title,
+            event.flavor,
+            outcomes
+      ));
     }
 
     return events;
