@@ -5,3 +5,6 @@
 
 # Haxe compiled binaries
 export/
+
+#fuckin macs
+.DS_Store

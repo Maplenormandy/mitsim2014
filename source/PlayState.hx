@@ -24,7 +24,7 @@ class PlayState extends FlxUIState {
   public var eventManager:EventManager;
 
   /**
-   * Function that is called up when to state is created to set it up. 
+   * Function that is called up when to state is created to set it up.
    */
   override public function create():Void {
     Reg.flags = new Map();
@@ -51,6 +51,25 @@ class PlayState extends FlxUIState {
     this.moneyText = cast _ui.getAsset("money", true);
     this.donorsText = cast _ui.getAsset("donors", true);
 
+
+    // Overlays
+    var overlay1 = new MapOverlay(100, 100);
+    //var overlay1pt = new FlxPoint(
+    var overlay2 = new MapOverlay(100, 100);
+    var overlay3 = new MapOverlay(100, 100);
+    var overlay4 = new MapOverlay(100, 100);
+    var overlay5 = new MapOverlay(100, 100);
+    var overlay6 = new MapOverlay(100, 100);
+
+    _campusMap = new CampusMap(300, 200, [overlay1,
+                                          overlay2,
+                                          overlay3,
+                                          overlay4,
+                                          overlay5,
+                                          overlay6],
+                                          []);
+
+    // Sound
     FlxG.sound.playMusic("mit-theme", 1);
   }
 
