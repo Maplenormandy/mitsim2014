@@ -20,6 +20,8 @@ class MenuState extends FlxUIState {
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void {
+		// _xml_id = "state_menu";
+
         _btnPlay = new FlxButton(0, 0, "Play", clickPlay);
         _btnPlay.screenCenter();
         add(_btnPlay);
