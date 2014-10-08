@@ -37,6 +37,10 @@
     <param type="int" value="3"/>
   </button>
 
+  <text id="effect" use_def="sans12c" x="30" y="540" width="740" text="">
+    <anchor x="30" x-flush="left" y="60" y-flush="top" />
+  </text>
+
   <mode id="choice_1" default="true">
     <show id="btn0" />
     <hide id="btn1,btn2,btn3" />

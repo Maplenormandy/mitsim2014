@@ -45,9 +45,10 @@ class PlayState extends FlxUIState {
    * Function that is called once every frame.
    */
   override public function update():Void {
-    if (Std.random(100) == 0 && !_showed) {
+    if (!_showed) {
       var event = new Event("Test Event", "Ayyoooo");
       event.addOutcome(new Outcome("+1 student happiness; -4k endowment", "aye"));
+      event.addOutcome(new Outcome("-1 student happiness; +4k endowment", "nay"));
       openSubState(new EventPopup(event));
       _showed = true;
     }
