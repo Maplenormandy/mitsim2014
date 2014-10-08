@@ -27,9 +27,8 @@ class EndState extends FlxUIState {
     _btnRestart.screenCenter();
     _btnRestart.y = FlxG.height * 2 / 3;
 
-    _txtReason = new FlxText(FlxG.width / 2, FlxG.height / 3, 0, reason, 12);
+    _txtReason = new FlxText(FlxG.width / 4, FlxG.height / 3, FlxG.width/2, reason, 12);
     _txtReason.setBorderStyle(FlxText.BORDER_SHADOW, FlxColor.GRAY, 1, 1);
-    _txtReason.alignment = "center";
 
     add(_btnRestart);
     add(_txtReason);
