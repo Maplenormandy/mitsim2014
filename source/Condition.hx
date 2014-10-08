@@ -26,7 +26,7 @@ class RangeCondition extends Condition {
   }
 
   public function value():Float {
-    return null;
+    return (lowerBound + upperBound)/2;
   }
 
   public override function getMtthMod():Float {
