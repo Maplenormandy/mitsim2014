@@ -24,6 +24,14 @@ lime test neko
 
 to compile and run the project.
 
+Alternatively,
+
+```
+lime build flash
+```
+
+and then load up `index.html` in a browser.
+
 ***
 
 Coding Guidelines
