@@ -26,6 +26,7 @@ class Event {
     this.flavorText = flavorText;
     this.titleText = titleText;
     this.outcomes = new Array<Outcome>();
+    this.conditions = new Array<Condition>();
     this._mtth = baseMtth;
   }
 

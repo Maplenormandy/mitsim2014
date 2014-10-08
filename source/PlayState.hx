@@ -21,13 +21,18 @@ class PlayState extends FlxUIState {
   // Temporary variable
   private var _showed:Bool;
 
+  public var eventManager:EventManager;
+
   /**
    * Function that is called up when to state is created to set it up. 
    */
   override public function create():Void {
     Reg.flags = new Map();
 
-    Reg.endowment = 1e9;
+    this.eventManager = new EventManager(new List<Event>());
+    this.eventManager.addDemoEvents();
+
+    Reg.endowment = 10000;
     Reg.studentHappiness = 10;
     Reg.wealthyDonors = 100;
 
@@ -68,12 +73,10 @@ class PlayState extends FlxUIState {
    * Function that is called once every frame.
    */
   override public function update():Void {
-    if (!_showed) {
-      var event = new Event("Test Event", "Ayyoooo", 100);
-      event.addOutcome(new Outcome("+1 student happiness; -4k endowment", "aye"));
-      event.addOutcome(new Outcome("-1 student happiness; +4k endowment", "nay"));
-      openSubState(new EventPopup(event));
-      _showed = true;
+    var e = this.eventManager.poll();
+
+    if (e != null) {
+      openSubState(new EventPopup(e));
     }
 
     this.moneyText.text = "$" + Reg.endowment;
@@ -85,7 +88,7 @@ class PlayState extends FlxUIState {
       lose("Out of money, you are forced to sell MIT to CalTech to make ends meet");
     }
 
-    Reg.endowment += Reg.wealthyDonors * 100;
+    Reg.endowment += Reg.wealthyDonors * 10;
 
     super.update();
   }

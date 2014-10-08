@@ -15,6 +15,7 @@ class RangeCondition extends Condition {
   private var upperBound:Float;
   private var mtthMod:Float;
   public function new(lowerBound:Float, upperBound:Float, mtthMod:Float) {
+    this.mtthMod = mtthMod;
     if (this.mtthMod < 0) {
       this.lowerBound = upperBound;
       this.upperBound = lowerBound;
@@ -22,7 +23,6 @@ class RangeCondition extends Condition {
       this.lowerBound = lowerBound;
       this.upperBound = upperBound;
     }
-    this.mtthMod = mtthMod;
   }
 
   public function value():Float {
@@ -37,7 +37,7 @@ class RangeCondition extends Condition {
         return 1;
       }
     } else {
-      if (this.value() < this.lowerBound || this.value() >= this.upperBound) {
+      if (this.value() >= this.lowerBound || this.value() < this.upperBound) {
         return this.mtthMod;
       } else {
         return 1;
