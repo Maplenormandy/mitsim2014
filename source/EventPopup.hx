@@ -33,7 +33,8 @@ class EventPopup extends FlxUIPopup {
     this.effectText = cast _ui.getAsset("effect_text");
 
     for (i in 0 ... this.event.outcomes.length) {
-      var button:FlxUIButton = cast _ui.getAsset("btn" + i);
+      var j:Int = this.event.outcomes.length - i - 1;
+      var button:FlxUIButton = cast _ui.getAsset("btn" + j);
       button.label.text = this.event.outcomes[i].flavorText;
     }
   }
@@ -43,11 +44,13 @@ class EventPopup extends FlxUIPopup {
       if (target != null && Std.is(target, FlxUIButton)) {
         if (id == "click_button") {
           var i:Int = cast params[0];
-          this.event.outcomes[i].effect();
+          var j:Int = this.event.outcomes.length - i - 1;
+          this.event.outcomes[j].effect();
           close();
         } else if (id == "over_button") {
           var i:Int = cast params[0];
-          this.effectText.text = this.event.outcomes[i].effectText;
+          var j:Int = this.event.outcomes.length - i - 1;
+          this.effectText.text = this.event.outcomes[j].effectText;
         } else if (id == "out_button") {
           this.effectText.text = "";
         }

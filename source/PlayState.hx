@@ -64,8 +64,8 @@ class PlayState extends FlxUIState {
     this.eventManager = new EventManager(new List<Event>());
     this.eventManager.addDemoEvents();
 
-    Reg.endowment = 10000;
-    Reg.studentHappiness = 10;
+    Reg.endowment = 2e6;
+    Reg.studentHappiness = 25;
     Reg.wealthyDonors = 100;
 
     _showed = false;

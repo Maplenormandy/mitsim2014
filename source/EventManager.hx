@@ -12,14 +12,14 @@ class EventManager {
 
   public function addDemoEvents():Void {
     // MTTH 500 frames
-    var e = new Event("Too Much Money!", "Swimming in it", 500);
+    var e = new Event("Too Much Money!", "Swimming in it", 1000);
     e.addOutcome(new Outcome("-500k endowment", "Okay"));
     // Make it only happen after 1 mil
     e.addCondition(new EndowmentRange(1e6, 1e10, -1));
     // Make it twice as likely after 2 mil
-    e.addCondition(new EndowmentRange(2e6, 1e10, 2));
+    e.addCondition(new EndowmentRange(2e6, 1e10, 1.5));
     // Make it thrice as likely after 4 mil (stacks w/ 2x)
-    e.addCondition(new EndowmentRange(4e6, 1e10, 3));
+    e.addCondition(new EndowmentRange(4e6, 1e10, 2));
 
     this.events.add(e);
 
@@ -51,13 +51,13 @@ class EventManager {
     e.addOutcome(new Outcome("-1 student happiness", "No"));
     this.events.add(e);
 
-    var e = new Event("Student falls through fraternity window", 700);
+    var e = new Event("Student falls through fraternity window", "Oops", 700);
     e.addOutcome(new Outcome("-700k endowment", "Let it slide (get sued)"));
     e.addOutcome(new Outcome("-10 student happiness; +50k endowment", "Ban all frat parties"));
     e.addOutcome(new Outcome("-2 student happiness; -15 wealthy donors", "Revoke charter"));
     this.events.add(e);
 
-    var e = new Event("Parents actually see Bexley", 700);
+    var e = new Event("Parents actually see Bexley", "Oops", 700);
     e.addOutcome(new Outcome("-7 student happiness; -30 wealthy donors", "Close it down"));
     e.addOutcome(new Outcome("-12 student happiness; -200k endowment", "Paint the walls white"));
     this.events.add(e);
