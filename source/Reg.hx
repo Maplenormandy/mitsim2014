@@ -11,11 +11,12 @@ class Reg {
   /**
    * Scores go here
    */
-  public static var endowment:Float;
-  public static var wealthyDonors:Int;
-  public static var studentHappiness:Int;
+  //public static var endowment:Float;
+  //public static var wealthyDonors:Int;
+  //public static var studentHappiness:Int;
 
   public static var flags:Map<String, Bool>;
+  public static var score:Map<String, Float>;
 
   /**
    * Generic bucket for storing different FlxSaves.

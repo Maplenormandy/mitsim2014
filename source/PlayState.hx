@@ -60,13 +60,14 @@ class PlayState extends FlxUIState {
 
 
     Reg.flags = new Map();
+    Reg.score = new Map();
 
     this.eventManager = new EventManager(new List<Event>());
     this.eventManager.addDemoEvents();
 
-    Reg.endowment = 2e6;
-    Reg.studentHappiness = 25;
-    Reg.wealthyDonors = 100;
+    Reg.score["endowment"] = 2e6;
+    Reg.score["student approval"] = 25;
+    Reg.score["wealthy donors"] = 100;
 
     _showed = false;
     _xml_id = "state_play";
@@ -112,17 +113,17 @@ class PlayState extends FlxUIState {
       openSubState(new EventPopup(e));
     }
 
-    this.moneyText.text = "$" + Reg.endowment;
-    this.donorsText.text = "Donors: " + Reg.wealthyDonors;
-    this.studentHappinessText.text = "Student Approval: " + Reg.studentHappiness + "%";
+    this.moneyText.text = "$" + Reg.score["endowment"];
+    this.donorsText.text = "Donors: " + Reg.score["wealthy donors"];
+    this.studentHappinessText.text = "Student Approval: " + Reg.score["student approval"] + "%";
 
-    if (Reg.studentHappiness < 0) {
+    if (Reg.score["student approval"] < 0) {
       lose("MIT burns to the ground in the largest student protest since the 70's");
-    } else if (Reg.endowment < 0) {
+    } else if (Reg.score["endowment"] < 0) {
       lose("Out of money, you are forced to sell MIT to CalTech to make ends meet");
     }
 
-    Reg.endowment += Reg.wealthyDonors * 10;
+    Reg.score["endowment"] += Reg.score["wealthy donors"] * 10;
 
     super.update();
   }

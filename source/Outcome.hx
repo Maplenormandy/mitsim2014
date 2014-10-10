@@ -1,49 +1,51 @@
 package;
 
 class Outcome {
-    public var flavorText(default, null):String;
-    public var effectText(default, null):String;
+  public var flavorText(default, null):String;
+  public var effectText(default, null):String;
 
-    public function new(effectText:String, flavorText:String) {
-        this.flavorText = flavorText;
-        this.effectText = effectText;
+  static var matchers:Map<String, EReg>;
+  static var matchersT:Map<String, EReg>;
+
+  static function __init__() {
+    var variables = ["student approval", "endowment", "wealthy donors"];
+    Outcome.matchers = new Map();
+    Outcome.matchersT = new Map();
+    for (v in variables) {
+      var numMatcher = "([+-][0-9]+\\.?[0-9]*)(k|mil|bil)?";
+      var timeMatcher = "over ([0-9]+) months";
+      Outcome.matchers[v] = new EReg(numMatcher + " " + v, "i");
+      Outcome.matchersT[v] = new EReg(numMatcher + " " + v + " " + timeMatcher, "i");
     }
+  }
 
-    public function effect() {
-        for (effect in effectText.split(";")) {
-            var r = ~/([+-][0-9]+) student happiness/;
-            if (r.match(effect)) {
-                var val = Std.parseInt(r.matched(1));
-                Reg.studentHappiness += val;
-                trace(Reg.studentHappiness);
-                continue;
-            }
+  public function new(effectText:String, flavorText:String) {
+    this.flavorText = flavorText;
+    this.effectText = effectText;
+  }
 
-            r = ~/([+-])([0-9]+\.?[0-9]*)(k|mil|bil) endowment/;
-            if (r.match(effect)) {
-                var val = Std.parseFloat(r.matched(1) + r.matched(2));
-                switch (r.matched(3)) {
-                case "k":
-                    val *= 1000;
-                case "mil":
-                    val *= 1000000;
-                case "bil":
-                    val *= 1000000000;
-                }
-                Reg.endowment += val;
-                trace(Reg.endowment);
-                continue;
-            }
-
-            var r = ~/([+-][0-9]+) wealthy donors/;
-            if (r.match(effect)) {
-                var val = Std.parseInt(r.matched(1));
-                Reg.wealthyDonors += val;
-                trace(Reg.wealthyDonors);
-                continue;
-            }
+  public function effect() {
+    for (effect in effectText.split(";")) {
+      for (v in Outcome.matchers.keys()) {
+        var r = Outcome.matchers[v];
+        if (r.match(effect)) {
+          var val = Std.parseFloat(r.matched(1));
+          switch(r.matched(2)) {
+            case "k":
+              val *= 1e3;
+            case "mil":
+              val *= 1e6;
+            case "bil":
+              val *= 1e9;
+            default:
+              //
+          }
+          Reg.score[v] += val;
+          break;
         }
+      }
     }
+  }
 
 }
 

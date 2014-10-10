@@ -10,11 +10,39 @@ class Condition {
   }
 }
 
+class FlagCondition extends Condition {
+  private var flag:String;
+  private var mtthMod:Float;
+
+  public function new(flag:String, mtthMod:Float) {
+    this.flag = flag;
+    this.mtthMod = mtthMod;
+  }
+
+  public override function getMtthMod():Float {
+    if (Reg.flags.exists(this.flag) || Reg.flags.get(this.flag) == false) {
+      if (this.mtthMod < 0) {
+        return this.mtthMod;
+      } else {
+        return 1;
+      }
+    } else {
+      if (this.mtthMod < 0) {
+        return 1;
+      } else {
+        return this.mtthMod;
+      }
+    }
+  }
+}
+
 class RangeCondition extends Condition {
   private var lowerBound:Float;
   private var upperBound:Float;
   private var mtthMod:Float;
-  public function new(lowerBound:Float, upperBound:Float, mtthMod:Float) {
+  private var value:String;
+  public function new(value:String, lowerBound:Float, upperBound:Float, mtthMod:Float) {
+    this.value = value;
     this.mtthMod = mtthMod;
     if (this.mtthMod < 0) {
       this.lowerBound = upperBound;
@@ -25,49 +53,21 @@ class RangeCondition extends Condition {
     }
   }
 
-  public function value():Float {
-    return (lowerBound + upperBound)/2;
-  }
-
   public override function getMtthMod():Float {
+    var v = Reg.score[this.value];
     if (this.lowerBound < this.upperBound) {
-      if (this.value() >= this.lowerBound && this.value() < this.upperBound) {
+      if (v >= this.lowerBound && v < this.upperBound) {
         return this.mtthMod;
       } else {
         return 1;
       }
     } else {
-      if (this.value() >= this.lowerBound || this.value() < this.upperBound) {
+      if (v >= this.lowerBound || v < this.upperBound) {
         return this.mtthMod;
       } else {
         return 1;
       }
     }
-  }
-}
-
-class EndowmentRange extends RangeCondition {
-  public function new(lowerBound:Float, upperBound:Float, mtthMod:Float) {
-    super(lowerBound, upperBound, mtthMod);
-  }
-  public override function value():Float {
-    return Reg.endowment;
-  }
-}
-class StudentHappinessRange extends RangeCondition {
-  public function new(lowerBound:Int, upperBound:Int, mtthMod:Float) {
-    super(lowerBound, upperBound, mtthMod);
-  }
-  public override function value():Float {
-    return Reg.studentHappiness;
-  }
-}
-class DonorRange extends RangeCondition {
-  public function new(lowerBound:Float, upperBound:Float, mtthMod:Float) {
-    super(lowerBound, upperBound, mtthMod);
-  }
-  public override function value():Float {
-    return Reg.wealthyDonors;
   }
 }
 
