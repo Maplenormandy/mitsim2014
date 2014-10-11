@@ -1,18 +1,21 @@
 package;
 
 import Condition.RangeCondition;
+import Condition.FlagCondition;
 
 class EventManager {
   public var events(default, null):List<Event>;
+  public var timeOutcomes(default, null):List<Outcome>;
 
   public function new(events:List<Event>) {
     this.events = events;
+    this.timeOutcomes = new List();
   }
 
 
   public function addDemoEvents():Void {
-    // MTTH 500 frames
-    var e = new Event("Too Much Money!", "Swimming in it", 1000);
+    // MTTH 1000 frames
+    var e = new Event("Too Much Money!", "Swimming in it", 250);
     e.addOutcome(new Outcome("-500k endowment", "Okay"));
     // Make it only happen after 1 mil
     e.addCondition(new RangeCondition("endowment", 1e6, 1e10, -1));
@@ -57,11 +60,17 @@ class EventManager {
     e.addOutcome(new Outcome("-2 student approval; -15 wealthy donors", "Revoke charter"));
     this.events.add(e);
 
-    var e = new Event("Parents actually see Bexley", "Oops", 700);
-    e.addOutcome(new Outcome("-7 student approval; -30 wealthy donors", "Close it down"));
+    var e = new Event("Parents actually see Bexley", "Oops", 1000);
+    e.addCondition(new FlagCondition("bexley closed", true, -1));
+    e.addOutcome(new Outcome("-7 student approval; -30 wealthy donors; bexley closed", "Close it down"));
     e.addOutcome(new Outcome("-12 student approval; -200k endowment", "Paint the walls white"));
     this.events.add(e);
 
+    var e = new Event("Donors clamor for Bexley", "They want it reopened", 1000);
+    e.addCondition(new FlagCondition("bexley closed", false, -1));
+    // Note that you can't currently unset flags
+    e.addOutcome(new Outcome("-5 wealthy donors", "Can't do anything"));
+    this.events.add(e);
   }
 
   public function poll():Event {

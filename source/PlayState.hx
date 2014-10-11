@@ -25,6 +25,10 @@ class PlayState extends FlxUIState {
 
   public var eventManager:EventManager;
 
+  public var oldEndowment:Float;
+  public var oldStudentApproval:Float;
+  public var oldWealthyDonors:Float;
+
   /**
    * Function that is called up when to state is created to set it up.
    */
@@ -66,8 +70,12 @@ class PlayState extends FlxUIState {
     this.eventManager.addDemoEvents();
 
     Reg.score["endowment"] = 2e6;
+    this.oldEndowment = 2e6;
     Reg.score["student approval"] = 25;
+    this.oldStudentApproval = 25;
     Reg.score["wealthy donors"] = 100;
+    // Pun not intended
+    this.oldWealthyDonors = 100;
 
     _showed = false;
     _xml_id = "state_play";
@@ -113,9 +121,16 @@ class PlayState extends FlxUIState {
       openSubState(new EventPopup(e));
     }
 
+    var deltaEndowment = (Reg.score["endowment"] - this.oldEndowment) * 30;
+    var deltaStudentApproval = (Reg.score["student approval"] - this.oldStudentApproval) * 30;
+
     this.moneyText.text = "$" + Reg.score["endowment"];
     this.donorsText.text = "Donors: " + Reg.score["wealthy donors"];
     this.studentHappinessText.text = "Student Approval: " + Reg.score["student approval"] + "%";
+
+    this.oldEndowment = Reg.score["endowment"];
+    this.oldStudentApproval = Reg.score["student approval"];
+    this.oldWealthyDonors = Reg.score["wealthy donors"];
 
     if (Reg.score["student approval"] < 0) {
       lose("MIT burns to the ground in the largest student protest since the 70's");

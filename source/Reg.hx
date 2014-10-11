@@ -15,7 +15,10 @@ class Reg {
   //public static var wealthyDonors:Int;
   //public static var studentHappiness:Int;
 
+  // Flags are booleans that can be used for preconditions.
+  // An unset flag is assumed to be false.
   public static var flags:Map<String, Bool>;
+  // Scores include endowment, student approval, wealthy donors
   public static var score:Map<String, Float>;
 
   /**

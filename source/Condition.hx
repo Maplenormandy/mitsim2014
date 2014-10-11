@@ -12,22 +12,25 @@ class Condition {
 
 class FlagCondition extends Condition {
   private var flag:String;
+  private var value:Bool;
   private var mtthMod:Float;
-
-  public function new(flag:String, mtthMod:Float) {
+  
+  // Literally, if flag == value, then return mtthMod
+  public function new(flag:String, value:Bool, mtthMod:Float) {
     this.flag = flag;
+    this.value = value;
     this.mtthMod = mtthMod;
   }
 
   public override function getMtthMod():Float {
-    if (Reg.flags.exists(this.flag) || Reg.flags.get(this.flag) == false) {
-      if (this.mtthMod < 0) {
+    if (Reg.flags.get(this.flag) == true) {
+      if (this.value) {
         return this.mtthMod;
       } else {
         return 1;
       }
     } else {
-      if (this.mtthMod < 0) {
+      if (this.value) {
         return 1;
       } else {
         return this.mtthMod;
