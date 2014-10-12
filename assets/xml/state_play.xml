@@ -22,21 +22,21 @@
 				<anchor x="left" y="top" x-flush="left" y-flush="top"/>
 
 				<min_size height="6%"/>
-			</chrome>		
+      </chrome>
+      <!--
 			<button id="options_button" x="5" y="10" use_def="basic_button" group="top" label="Options">
-				<!--
 				<anchor x="title_bar.left" y="title_bar.top" x-flush="left" y-flush="bottom"/>
-			-->
-			</button> 
-			<text id="title" use_def="sans16c" x="100" y="10" width="100" text="MIT Sim">
+      </button>
+      -->
+			<text id="title" use_def="sans16c" x="10" y="10" width="100" text="MIT Sim">
 			</text>
 	</layout>
   <!-- Note: I moved these out here since getAsset can't find them in there -->
-  <text id="name" use_def="sans16c" x="210" y="10" width="300" align="left" text="{name}">
+  <text id="name" use_def="sans16c" x="110" y="10" width="300" align="left" text="{name}">
   </text>
-  <text id="money" use_def="sans12" x="450" y="5" width="100" text="{money}"></text>
-  <text id="donors" use_def="sans12" x="450" y="20" width="100" text="{donors}"></text>
-  <text id="student-happiness" use_def="sans12" x="560" y="5" width="400" text="{student-happiness}"></text>
+  <text id="money" use_def="sans12" x="350" y="5" width="200" text="{money}"></text>
+  <text id="donors" use_def="sans12" x="560" y="5" width="200" text="{donors}"></text>
+  <text id="student-happiness" use_def="sans12" x="350" y="20" width="400" text="{student-happiness}"></text>
 	
 	<mode id="primary" default="true">
 		<show id="primary"/>

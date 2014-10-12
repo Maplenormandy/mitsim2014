@@ -118,15 +118,30 @@ class PlayState extends FlxUIState {
     var e = this.eventManager.poll();
 
     if (e != null) {
-      openSubState(new EventPopup(e));
+      openSubState(new EventPopup(e, this.eventManager));
     }
 
-    var deltaEndowment = (Reg.score["endowment"] - this.oldEndowment) * 30;
-    var deltaStudentApproval = (Reg.score["student approval"] - this.oldStudentApproval) * 30;
 
-    this.moneyText.text = "$" + Reg.score["endowment"];
-    this.donorsText.text = "Donors: " + Reg.score["wealthy donors"];
-    this.studentHappinessText.text = "Student Approval: " + Reg.score["student approval"] + "%";
+    this.moneyText.text = "$" + Std.int(Reg.score["endowment"]);
+    this.donorsText.text = "Donors: " + Std.int(Reg.score["wealthy donors"]);
+    this.studentHappinessText.text = "Student Approval: " + Std.int(Reg.score["student approval"]) + "%";
+
+    var deltaEndowment = (Reg.score["endowment"] - this.oldEndowment) * Reg.framesPerMonth;
+    deltaEndowment = Std.int(deltaEndowment);
+    var deltaStudentApproval = (Reg.score["student approval"] - this.oldStudentApproval) * Reg.framesPerMonth;
+    deltaStudentApproval = Std.int(deltaStudentApproval * 10) / 10;
+
+    if (deltaEndowment > 0) {
+      this.moneyText.text += " (+" + deltaEndowment + ")";
+    } else {
+      this.moneyText.text += " (" + deltaEndowment + ")";
+    }
+    
+    if (deltaStudentApproval > 0) {
+      this.studentHappinessText.text += " (+" + deltaStudentApproval + ")";
+    } else if (deltaStudentApproval < 0) {
+      this.studentHappinessText.text += " (" + deltaStudentApproval + ")";
+    }
 
     this.oldEndowment = Reg.score["endowment"];
     this.oldStudentApproval = Reg.score["student approval"];

@@ -11,9 +11,11 @@ import flixel.addons.ui.interfaces.IFlxUIWidget;
 class EventPopup extends FlxUIPopup {
   public var event(default, null):Event;
   private var effectText(default, null):FlxUIText;
+  public var eventManager(default, null):EventManager;
 
-  public function new(event:Event) {
+  public function new(event:Event, eventManager:EventManager) {
     this.event = event;
+    this.eventManager = eventManager;
 
     super();
   }
@@ -45,7 +47,10 @@ class EventPopup extends FlxUIPopup {
         if (id == "click_button") {
           var i:Int = cast params[0];
           var j:Int = this.event.outcomes.length - i - 1;
-          this.event.outcomes[j].effect();
+          // If effect() returns true, then it's a timed effect.
+          if (this.event.outcomes[j].effect()) {
+            this.eventManager.timeOutcomes.add(this.event.outcomes[j]);
+          }
           close();
         } else if (id == "over_button") {
           var i:Int = cast params[0];

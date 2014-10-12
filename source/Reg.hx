@@ -21,6 +21,8 @@ class Reg {
   // Scores include endowment, student approval, wealthy donors
   public static var score:Map<String, Float>;
 
+  public static var framesPerMonth = 60;
+
   /**
    * Generic bucket for storing different FlxSaves.
    * Especially useful for setting up multiple save slots.

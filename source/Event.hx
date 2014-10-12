@@ -22,12 +22,13 @@ class Event {
     return mtth;
   }
 
+  // baseMtth in months
   public function new(titleText:String, flavorText:String, baseMtth:Float) {
     this.flavorText = flavorText;
     this.titleText = titleText;
     this.outcomes = new Array<Outcome>();
     this.conditions = new Array<Condition>();
-    this._mtth = baseMtth;
+    this._mtth = baseMtth * Reg.framesPerMonth;
   }
 
   public function addOutcome(outcome:Outcome):Void {
