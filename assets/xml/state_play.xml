@@ -35,8 +35,9 @@
   <text id="name" use_def="sans16c" x="110" y="10" width="300" align="left" text="{name}">
   </text>
   <text id="money" use_def="sans12" x="350" y="5" width="200" text="{money}"></text>
-  <text id="donors" use_def="sans12" x="560" y="5" width="200" text="{donors}"></text>
+  <text id="donors" use_def="sans12" x="580" y="5" width="200" text="{donors}"></text>
   <text id="student-happiness" use_def="sans12" x="350" y="20" width="400" text="{student-happiness}"></text>
+  <text id="calendar" use_def="sans12" x="580" y="20" width="400" text="{calendar}"></text>
 	
 	<mode id="primary" default="true">
 		<show id="primary"/>

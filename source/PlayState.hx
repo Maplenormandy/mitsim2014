@@ -19,6 +19,7 @@ class PlayState extends FlxUIState {
   public var moneyText:FlxUIText;
   public var donorsText:FlxUIText;
   public var studentHappinessText:FlxUIText;
+  public var calendarText:FlxUIText;
 
   // Temporary variable
   private var _showed:Bool;
@@ -28,6 +29,8 @@ class PlayState extends FlxUIState {
   public var oldEndowment:Float;
   public var oldStudentApproval:Float;
   public var oldWealthyDonors:Float;
+
+  private var _frameCount : Int = 0;
 
   /**
    * Function that is called up when to state is created to set it up.
@@ -88,6 +91,7 @@ class PlayState extends FlxUIState {
     this.moneyText = cast _ui.getAsset("money", true);
     this.donorsText = cast _ui.getAsset("donors", true);
     this.studentHappinessText = cast _ui.getAsset("student-happiness", true);
+    this.calendarText = cast _ui.getAsset("calendar", true);
 
     // Sound
     FlxG.sound.playMusic("mit-theme", 1);
@@ -110,11 +114,21 @@ class PlayState extends FlxUIState {
     FlxG.switchState(state);
   }
 
+  private function getCalendarText(monthsElapsed : Float) : String {
+    var seasons = ["Fall", "Winter", "Spring", "Summer"];
+    var yearStart = 2012.0;
+    var seasonsElapsed = Math.floor(monthsElapsed / 3);
+
+    return seasons[seasonsElapsed % 4] + " " + Math.floor(yearStart + monthsElapsed / 12);
+  }
+
 
   /**
    * Function that is called once every frame.
    */
   override public function update():Void {
+    _frameCount += 1;
+
     var e = this.eventManager.poll();
 
     if (e != null) {
@@ -123,8 +137,9 @@ class PlayState extends FlxUIState {
 
 
     this.moneyText.text = "$" + Std.int(Reg.score["endowment"]);
-    this.donorsText.text = "Donors: " + Std.int(Reg.score["wealthy donors"]);
+    this.donorsText.text = "Wealthy Donors: " + Std.int(Reg.score["wealthy donors"]);
     this.studentHappinessText.text = "Student Approval: " + Std.int(Reg.score["student approval"]) + "%";
+    this.calendarText.text = getCalendarText(_frameCount / Reg.framesPerMonth);
 
     var deltaEndowment = (Reg.score["endowment"] - this.oldEndowment) * Reg.framesPerMonth;
     deltaEndowment = Std.int(deltaEndowment);
