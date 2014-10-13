@@ -21,7 +21,7 @@ class Reg {
   // Scores include endowment, student approval, wealthy donors
   public static var score:Map<String, Float>;
 
-  public static var framesPerMonth = 60;
+  public static var framesPerMonth = 108; // 60 * 1.8
 
   /**
    * Generic bucket for storing different FlxSaves.
