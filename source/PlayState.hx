@@ -147,7 +147,7 @@ class PlayState extends FlxUIState {
     this.oldStudentApproval = Reg.score["student approval"];
     this.oldWealthyDonors = Reg.score["wealthy donors"];
 
-    if (Reg.score["student approval"] < 0) {
+    if (Reg.score["student approval"] <= 0) {
       lose("MIT burns to the ground in the largest student protest since the 70's");
     } else if (Reg.score["endowment"] < 0) {
       lose("Out of money, you are forced to sell MIT to CalTech to make ends meet");
