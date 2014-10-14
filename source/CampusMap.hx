@@ -9,29 +9,20 @@ import flixel.util.FlxAngle;
 class CampusMap extends FlxSprite
 {
     public var speed:Float = 500;
-    private var overlays:Array<MapOverlay>;
 
     private var originalX:Float;
     private var originalY:Float;
 
-    public function new(X:Float=0, Y:Float=0, overlays:Array<MapOverlay>,
-                                              positions:Array<FlxPoint>)
+    public function new(X:Float=0, Y:Float=0)
     {
         super(X, Y);
 
         drag.x = drag.y = 1400;
-        this.overlays = overlays;
 
         this.originalX = X;
         this.originalY = Y;
 
         this.loadGraphic(AssetPaths.campusmap__png);
-
-        for (i in 0...this.overlays.length) {
-          this.stamp(this.overlays[i], Std.int(positions[i].x), Std.int(positions[i].x));
-          this.overlays[i].setAlpha(0.0);
-
-        }
     }
 
     // KILLS PERFORMANCE. KILLS IT.
@@ -50,42 +41,6 @@ class CampusMap extends FlxSprite
         this.scale = this.scale.add(0.01, 0.01);
       } else if (_out) {
         this.scale = this.scale.add(-0.01, -0.01);
-      }
-    }
-
-    private function highlightControl():Void
-    {
-      var hi:Bool = false;
-      hi = FlxG.keys.anyPressed(["Y"]);
-      if (hi) {
-        this.buildingHighlight(0);
-      }
-      hi = FlxG.keys.anyPressed(["U"]);
-      if (hi) {
-        this.buildingHighlight(1);
-      }
-      hi = FlxG.keys.anyPressed(["I"]);
-      if (hi) {
-        this.buildingHighlight(2);
-      }
-      hi = FlxG.keys.anyPressed(["O"]);
-      if (hi) {
-        this.buildingHighlight(3);
-      }
-      hi = FlxG.keys.anyPressed(["P"]);
-      if (hi) {
-        this.buildingHighlight(4);
-      }
-
-    }
-
-
-    private function buildingHighlight(i:Int, on:Bool=true):Void
-    {
-      if (on) {
-        this.overlays[i].setAlpha(0.3);
-      } else {
-        this.overlays[i].setAlpha(0.0);
       }
     }
 
@@ -137,7 +92,6 @@ class CampusMap extends FlxSprite
     override public function update():Void {
       movement();
       //zoom();
-      highlightControl();
       super.update();
     }
 }
