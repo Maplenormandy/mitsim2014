@@ -37,7 +37,11 @@
   <text id="money" use_def="sans16" x="380" y="80" width="400" text="{money}"></text>
   <text id="donors" use_def="sans16" x="380" y="130" width="400" text="{donors}"></text>
   <text id="student-happiness" use_def="sans16" x="380" y="180" width="400" text="{student-happiness}"></text>
-  <text id="calendar" use_def="sans16" x="540" y="10" width="400" text="{calendar}"></text>
+  <text id="calendar" use_def="sans16" x="430" y="10" align="right" width="200" text="{calendar}">
+  </text>
+
+  <text id="title1" use_def="sans16c" x="0" y="80" width="350" align="center" text="All quiet...">
+  </text>
 	
 	<mode id="primary" default="true">
 		<show id="primary"/>
