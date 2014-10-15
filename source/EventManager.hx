@@ -16,7 +16,7 @@ class EventManager {
 
   public function addDemoEvents():Void {
     // MTTH of 12 months, i.e. 12 seconds
-    var e = new Event("Hexane Spill in 18", "Almost three whole gallons!", 12);
+    var e = new Event("Hexane Spill in 18", "Almost three whole gallons!", 16);
     e.addOutcome(new Outcome("-5 student approval", "Alert everyone on campus"));
     e.addOutcome(new Outcome("-200k endowment", "Clean it up"));
     e.addOutcome(new Outcome("-300mil endowment", "Ignore it (get sued)"));
@@ -34,18 +34,18 @@ class EventManager {
     this.events.add(e);
 
     var e = new Event("Dining is losing money", "$14 a meal is too cheap.", 16);
-    e.addOutcome(new Outcome("-30 student approval", "Make dining mandatory for everyone"));
-    e.addOutcome(new Outcome("-10 student approval; -10 wealthy donors", "Make dining mandatory for all dorms"));
+    e.addOutcome(new Outcome("-30 student approval over 12 months; +10 wealthy donors", "Make dining mandatory for everyone"));
+    e.addOutcome(new Outcome("+500k endowment; -10 student approval", "Increase price"));
     this.events.add(e);
 
     var e = new Event("Decision Point!", "Do you buy CalTech?", 24);
-    e.addOutcome(new Outcome("-2mil endowment", "Yes"));
+    e.addOutcome(new Outcome("-2bil endowment", "Yes"));
     e.addOutcome(new Outcome("-3 wealthy donors", "No"));
     this.events.add(e);
 
-    var e = new Event("Phi Sig drops pledge through skylight", "Big Oops.", 16);
-    e.addOutcome(new Outcome("-10 student approval", "Revoke Delta Upsilon charter for hazing"));
-    e.addOutcome(new Outcome("+2 student approval; -10 wealthy donors", "Revoke Phi Sig charter"));
+    var e = new Event("Frat drops pledge through skylight", "Big Oops.", 16);
+    e.addOutcome(new Outcome("-800k endowment; -5 wealthy donors", "Leave it (get sued)"));
+    e.addOutcome(new Outcome("-5 student approval", "Revoke frat charter for hazing"));
     this.events.add(e);
 
     var e = new Event("FSILG office requests permission to regulate all student fun",
@@ -61,13 +61,22 @@ class EventManager {
 
     var e = new Event("Not the best", "MIT gets 2nd place in U. S. News ranking", 15);
     e.addOutcome(new Outcome("-1mil endowment", "Invest more in research"));
-    e.addOutcome(new Outcome("-5mil endowment", "Buy the first place school, Harvard"));
-    e.addOutcome(new Outcome("-10 wealthy donors", "Lame email about new STEM initiative"));
+    e.addOutcome(new Outcome("-5bil endowment", "Buy the first place school, Harvard"));
+    e.addOutcome(new Outcome("-5 wealthy donors", "Lame email about new STEM initiative"));
     this.events.add(e);
 
     var e = new Event("Bad weather", "Harvard closes for hurricane", 18);
     e.addOutcome(new Outcome("-800k endowment", "Close MIT too"));
     e.addOutcome(new Outcome("-5 wealthy donors; -8 student approval", "Make everyone suffer."));
+    this.events.add(e);
+
+    var e = new Event("Good weather", "Really? In Boston?", 10);
+    e.addOutcome(new Outcome("+3 student approval", "Great!"));
+    this.events.add(e);
+
+    var e = new Event("Alumni Event", "Host an alumni event?", 14);
+    e.addOutcome(new Outcome("-300k endowment; +5 wealthy donors", "Yes"));
+    e.addOutcome(new Outcome("-3 wealthy donors", "No"));
     this.events.add(e);
 
     var e = new Event("No Sleep", "Students tired after CPW", 18);
@@ -87,12 +96,17 @@ class EventManager {
 
     var e = new Event("Asbestos", "Discovered in literally everything", 24);
     e.addOutcome(new Outcome("-1mil endowment", "Leave it (get sued)"));
-    e.addOutcome(new Outcome("-8 wealthy donors; -700k endowment", "Fix it"));
+    e.addOutcome(new Outcome("+8 wealthy donors; -700k endowment", "Fix it"));
     this.events.add(e);
 
     var e = new Event("Hack!", "Someone impersonates Reif's Email", 20);
-    e.addOutcome(new Outcome("+5 student approval", "Call it a good hack"));
-    e.addOutcome(new Outcome("-6 student approval", "Make him publicly apologize"));
+    e.addOutcome(new Outcome("+5 student approval; -4 wealthy donors", "Call it a good hack"));
+    e.addOutcome(new Outcome("-6 student approval; +4 wealthy donors", "Make the perpetrator publicly apologize"));
+    this.events.add(e);
+
+    var e = new Event("Shadowy MIT Corporation declares new policy direction", "The stars aligned just the right way last night", 20);
+    e.addOutcome(new Outcome("+500k endowment", "Accept it"));
+    e.addOutcome(new Outcome("+500k endowment", "Accept it"));
     this.events.add(e);
 
     // This event and the next one shows how to use flags to control which events
@@ -103,10 +117,10 @@ class EventManager {
     e.addOutcome(new Outcome("-12 student approval; -200k endowment", "Paint the walls white"));
     this.events.add(e);
 
-    var e = new Event("Donors clamor for Bexley", "They want it reopened", 1000);
+    var e = new Event("Donors clamor for Bexley", "They want it reopened", 16);
     e.addCondition(new FlagCondition("bexley closed", false, -1));
     // Note that you can't currently unset flags
-    e.addOutcome(new Outcome("-5 wealthy donors", "Can't do anything"));
+    e.addOutcome(new Outcome("-4 wealthy donors", "Can't do anything"));
     this.events.add(e);
 
 

@@ -3,7 +3,7 @@
 <data>
   <include id="_ui_globals"/>
 
-  <definition id="button" width="300" height="25">
+  <definition id="button" width="290" height="25">
     <text use_def="sans12c" color="0xffffff">
       <color id="over" value="0xffff00" />
     </text>
@@ -11,37 +11,37 @@
 
   <sprite id="black" x="0" y="0" width="100%" height="100%" color="0x88000000"/>
 
-  <chrome id="back" src="ui/chrome/dark_grey" slice9="4,4,8,8" center_x="true" center_y="true" width="400" height="400"/>   
+  <chrome id="back" src="ui/chrome/dark_grey" slice9="4,4,8,8" x="0" y="40" width="350" height="560"/>   
 
-  <text id="title" use_def="sans16c" x="0" y="10" width="back.width" text="{title}">
+  <text id="title" use_def="sans16c" x="0" y="40" width="back.width" text="{title}">
     <anchor x="back.left" x-flush="left" y="back.top" y-flush="top"/>
   </text>
 
-  <text id="flavor" use_def="sans12c" x="0" y="60" width="back.width" text="{flavor}">
+  <text id="flavor" use_def="sans12c" x="0" y="90" width="back.width" text="{flavor}">
     <anchor x="back.left" x-flush="left" y="back.top" y-flush="top"/>
   </text>
 
-  <button id="btn0" use_def="button" x="50" y="-200"  label="{outcome0}">
+  <button id="btn0" use_def="button" x="30" y="-300"  label="{outcome0}">
     <anchor y="back.bottom" y-flush="botom" x="back.left" x-flush="left"/>
     <param type="int" value="0"/>
   </button>
 
-  <button id="btn1" use_def="button" x="50" y="-230" label="{outcome1}">
+  <button id="btn1" use_def="button" x="30" y="-330" label="{outcome1}">
     <anchor y="back.bottom" y-flush="botom" x="back.left" x-flush="left"/>
     <param type="int" value="1"/>
   </button>
 
-  <button id="btn2" use_def="button" x="50" y="-260" label="{outcome2}">
+  <button id="btn2" use_def="button" x="30" y="-360" label="{outcome2}">
     <anchor y="back.bottom" y-flush="botom" x="back.left" x-flush="left"/>
     <param type="int" value="2"/>
   </button>
 
-  <button id="btn3" use_def="button" x="50" y="-290" label="{outcome3}">
+  <button id="btn3" use_def="button" x="30" y="-390" label="{outcome3}">
     <anchor y="back.bottom" y-flush="botom" x="back.left" x-flush="left"/>
     <param type="int" value="3"/>
   </button>
 
-  <text id="effect_text" align="center" use_def="sans12c" width="back.width" y="-100"  text="">
+  <text id="effect_text" align="center" use_def="sans12c" width="back.width" y="-200"  text="">
     <anchor y="back.bottom" y-flush="back.botom" x="back.left" x-flush="left"/>
   </text>
 

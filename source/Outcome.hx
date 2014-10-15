@@ -89,11 +89,9 @@ class Outcome {
       for (v in Outcome.matchers.keys()) {
         var r = Outcome.matchers[v];
         if (r.match(effect)) {
-          trace("score: " + v);
           if (time < 0) {
             Reg.score[v] += this.getNumber(r);
           } else {
-            trace(time);
             timed = true;
 
             // Update the time effect text
@@ -120,12 +118,10 @@ class Outcome {
       // Match flag effects
       var flag:String = Outcome.timeMatcherFlags.replace(effect, "");
       flag = Outcome.stripMatcher.replace(flag, "");
-      trace("flag: " + flag);
       
       if (time < 0) {
         Reg.flags[flag] = true;
       } else {
-        trace(time);
         timed = true;
 
         Reg.flags[flag] = true;
