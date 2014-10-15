@@ -54,17 +54,46 @@ class EventManager {
     e.addOutcome(new Outcome("-7 wealthy donors", "No"));
     this.events.add(e);
 
-    var e = new Event("Alarming number of parents call about X", "What did they call about?", 16);
+    var e = new Event("Alarming number of parents call about X", "What did they call about?", 14);
     e.addOutcome(new Outcome("-200k endowment", "Food poisoning at Masseeh"));
     e.addOutcome(new Outcome("-8 wealthy donors", "Ebola."));
     this.events.add(e);
 
-    var e = new Event("Not the best", "MIT gets 2nd place in U. S. News ranking", 16);
+    var e = new Event("Not the best", "MIT gets 2nd place in U. S. News ranking", 15);
     e.addOutcome(new Outcome("-1mil endowment", "Invest more in research"));
     e.addOutcome(new Outcome("-5mil endowment", "Buy the first place school, Harvard"));
     e.addOutcome(new Outcome("-10 wealthy donors", "Lame email about new STEM initiative"));
     this.events.add(e);
 
+    var e = new Event("Bad weather", "Harvard closes for hurricane", 18);
+    e.addOutcome(new Outcome("-800k endowment", "Close MIT too"));
+    e.addOutcome(new Outcome("-5 wealthy donors; -8 student approval", "Make everyone suffer."));
+    this.events.add(e);
+
+    var e = new Event("No Sleep", "Students tired after CPW", 18);
+    e.addOutcome(new Outcome("-5 wealthy donors; -5 student approval", "Only \"approve\" MIT sanctioned events"));
+    e.addOutcome(new Outcome("-8 student approval", "Only allow events before 1 AM"));
+    this.events.add(e);
+
+    var e = new Event("Asbestos", "Discovered in East Campus", 18);
+    e.addOutcome(new Outcome("-600k endowment", "Leave it (get sued)"));
+    e.addOutcome(new Outcome("+5 student approval; -700k endowment", "Fix it"));
+    this.events.add(e);
+
+    var e = new Event("Asbestos", "Discovered in Masseeh Dining", 21);
+    e.addOutcome(new Outcome("-900k endowment", "Leave it (get sued)"));
+    e.addOutcome(new Outcome("+8 student approval; -1mil endowment", "Fix it"));
+    this.events.add(e);
+
+    var e = new Event("Asbestos", "Discovered in literally everything", 24);
+    e.addOutcome(new Outcome("-1mil endowment", "Leave it (get sued)"));
+    e.addOutcome(new Outcome("-8 wealthy donors; -700k endowment", "Fix it"));
+    this.events.add(e);
+
+    var e = new Event("Hack!", "Someone impersonates Reif's Email", 20);
+    e.addOutcome(new Outcome("+5 student approval", "Call it a good hack"));
+    e.addOutcome(new Outcome("-6 student approval", "Make him publicly apologize"));
+    this.events.add(e);
 
     // This event and the next one shows how to use flags to control which events
     // fire or not.
