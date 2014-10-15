@@ -14,8 +14,6 @@ import flixel.addons.ui.FlxUIText;
  * A FlxState which can be used for the actual gameplay.
  */
 class PlayState extends FlxUIState {
-  private var _campusMap:CampusMap;
-
   public var moneyText:FlxUIText;
   public var donorsText:FlxUIText;
   public var studentHappinessText:FlxUIText;
@@ -36,10 +34,6 @@ class PlayState extends FlxUIState {
    * Function that is called up when to state is created to set it up.
    */
   override public function create():Void {
-
-    var _campusMap = new CampusMap(300, 200);
-    add(_campusMap);
-
 
     Reg.flags = new Map();
     Reg.score = new Map();
